@@ -23,6 +23,7 @@ for _ in range(word_length):
 already_guessed = []
 
 while not end_of_game:
+    print(' '.join(display) + "\n")
     guess = input("Guess a letter: ").lower()
     
     if guess in already_guessed:
@@ -44,7 +45,7 @@ while not end_of_game:
               print(f"You lose. The word was {chosen_word}")
   
       #Join all the elements in the list and turn it into a String.
-      print(f"{' '.join(display)}")
+      #print(f"{' '.join(display)}")
   
       #Check if user has got all letters.
       if "_" not in display:
