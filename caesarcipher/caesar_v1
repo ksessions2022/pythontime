@@ -12,12 +12,10 @@ def encrypt(text, shift):
   encrypted_message = ''
   
   for i in range(0, num_char):
-    shifted_index = alphabet.index(text[i]) + shift
-    shifted_index = shifted_index % 26
+    shifted_index = alphabet.index(text[i]) + shift % 26 
     shifted_char = alphabet[shifted_index]
     encrypted_message += shifted_char
   print(f"the encoded text is {encrypted_message}")
-
 
 def decrypt(text, shift):
   num_char = len(text)
