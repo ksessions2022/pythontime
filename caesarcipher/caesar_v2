@@ -2,25 +2,54 @@
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-def new_word_generator():
+from art import logo
+
+#Functions
+
+def is_valid(user_input):
+  if (user_input == "n") or (user_input == "no") or (user_input == "y") or (user_input == "yes"):
+    return True
+  else:
+    return False
+  
+def prompt_again(user_input):
+  user_input = input("Play again? y/n \n").lower()
+  while not is_valid(user_input):
+    print("Invalid Input")
+    user_input = input("Play again? y/n \n").lower()
+  return user_input
+
+def program():
+  print(logo)
+  direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n") 
+  
+  if direction == "encode" or direction == "decode":
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+    new_word_generator(text, shift, direction)
+  else:
+    print("Invalid Input! The options are 'encode' and 'decode'")
+
+def new_word_generator(text, shift, direction):
   num_char = len(text)
   the_message = ''
   for i in range(0, num_char):
-    if direction == "encode":
-      shifted_index = alphabet.index(text[i]) + shift % 26
-      specified_action = "encrypted" 
+    if text[i] not in alphabet:
+      the_message += text[i]
     else:
-      shifted_index = alphabet.index(text[i]) - shift % 26
-      specified_action = "decrypted"
-    shifted_char = alphabet[shifted_index]
-    the_message += shifted_char
-  print(f"the {specified_action} text is {the_message}")  
+      original_index = alphabet.index(text[i])
+      if direction == "encode":
+        shifted_index = (original_index + shift) % 26
+        specified_action = "encrypted" 
+      else:
+        shifted_index = (original_index - shift) % 26
+        specified_action = "decrypted"
+      shifted_char = alphabet[shifted_index]
+      the_message += shifted_char
+  print(f"the {specified_action} text is {the_message}\n")
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n") 
-
-if direction == "encode" or direction == "decode":
-  text = input("Type your message:\n").lower()
-  shift = int(input("Type the shift number:\n"))
-  new_word_generator()
-else: 
-  print("Invalid Input! The options are 'encode' and 'decode'")
+#Start of script
+prompt_play_again = ""
+while (prompt_play_again != "n") and (prompt_play_again != "no"):
+  program()
+  prompt_play_again = prompt_again(prompt_play_again)
