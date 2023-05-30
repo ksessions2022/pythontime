@@ -28,15 +28,15 @@ def calculator():
   answer = ""
   while continue_calculation == 'y':
     if answer == "":
-      num1 = int(input("What's the first number?: "))
+      num1 = float(input("What's the first number?: "))
     else:
-      num1 = answer
+      num1 = float(answer)
     
     for symbol in operations:
       print(symbol)
     
     operation_symbol = input("Pick an operation from the lines above: ")
-    num2 = int(input("What's the next number?: "))
+    num2 = float(input("What's the next number?: "))
     answer = operations[operation_symbol](num1, num2)
     
     print(f"{num1} {operation_symbol} {num2} = {answer}")
