@@ -1,4 +1,6 @@
-from calculator_art import calculator
+#!/usr/bin/python3
+
+from calculator_art import calculator_logo
 #Calculator Functions
 def add(n1, n2):
   return n1 + n2
@@ -45,8 +47,8 @@ def calculator():
       calculator()
       
 #Start of Script
-print(calculator)
-calculator() 
+print(calculator_logo)
+calculator()
 
 
  
