@@ -1,2 +1,1 @@
-# pythontime
-This is where Imma have some Python time
+These are Python Projects that I have done from the 100 Days of Coding course for Python
