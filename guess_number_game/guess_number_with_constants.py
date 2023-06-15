@@ -23,14 +23,29 @@ def choose_difficulty():
         print("Invalid Input")
         exit()
 
-def game():
+def check_guesses(answer, turns, user_guess):
+    if user_guess == answer:
+        print(f"You got it! The answer is {answer}! ")
+        exit()
+    if user_guess > answer:
+        print("Too High.")
+        
+    if user_guess < answer:
+        print("Too Low")
+
+    print("Guess Again")
+    return turns - 1
+
+def main():
     print(number)
     print("Welcome to the Number Guessing Game!")
     print("I'm thinking of a number between 1 and 100.")
-    choose_difficulty()
-    guess()
-    
-    #answer = random.randint(1,100)
-    #user_guess = guess()
-    #turns = choose_difficulty()
-game()
+    answer = random.randint(1,100)
+    turns = choose_difficulty()
+    while turns != 0:
+        print(f"You have {turns} attempts to guess the number")
+        user_guess = guess()
+        turns = check_guesses(answer, turns, user_guess)
+    print("You ran out of guesses. You lose!")
+
+main()
