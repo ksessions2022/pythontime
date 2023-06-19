@@ -3,45 +3,49 @@ from hlart import logo, vs
 from data import data
 import random
 
+pick_random_number = random.randint(0,49)
+current_score = 0
+person_a = (data[pick_random_number])
+person_b = (data[pick_random_number])
+
 def random_person_selection():
     pick_random_number = random.randint(0,49)
     person = (data[pick_random_number])
     return person
 
-def extract_information():
-    person = random_person_selection()
-    name = person['name']
-    number_of_followers = person['follower_count']
-    description = person['description']
-    country = person['country']
-    return name, number_of_followers, description, country
-
 def who_has_more_followers(person1, person2):
-    if person1[1] > person2[1]:
-        return person1[0]
+    if person1['follower_count'] > person2['follower_count']:
+        return person1['name']
     else:
-        return person2[0]
+        return person2['name']
     
 def is_the_user_correct(most_popular, persons_guess):
+    global current_score
     if most_popular == persons_guess:
-        return True
+        current_score += 1
+        print(f"You're right! Current score: {current_score}")
+        main()
     else:
-        return False
+        print(f"Sorry, that's wrong. Final score: {current_score}")
+        exit()
     
-def main():
+def guess():   
     print(logo)
-    person_a = extract_information()
-    person_b = extract_information()
-    print(f"Compare A: {person_a[0]}, {person_a[2]}, {person_a[3]}")
+    print(f"Compare A: {person_a['name']}, {person_a['description']}, {person_a['country']}")
     print(vs)
-    print(f"Compare B: {person_b[0]}, {person_b[2]}, {person_b[3]}")
+    print(f"Compare B: {person_b['name']}, {person_b['description']}, {person_b['country']}")
     guess = str.lower(input("Who has more followers? Type 'A' or 'B': "))
+    return guess
+
+
+def main():
+    guess()
     most_popular = (who_has_more_followers(person_a, person_b))
-    if guess == "a":
-        persons_guess = person_a[0]
+    if guess() == "a":
+        persons_guess = person_a['name']
         is_the_user_correct(most_popular, persons_guess)
-    elif guess == "b":
-        persons_guess = person_b[0]
+    elif guess() == "b":
+        persons_guess = person_b['name']
         is_the_user_correct(most_popular, persons_guess)
     else:
         print("Invalid Input.")

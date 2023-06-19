@@ -2,10 +2,8 @@
 import random
 from number_art import number
 
-answer = random.randint(1,100)
-
 def game(number_of_guesses):
-    global answer
+    answer = random.randint(1,100)
     for _ in range(1, number_of_guesses+1):
         if number_of_guesses == 0:
             break
@@ -28,7 +26,7 @@ def game(number_of_guesses):
             print("Guess Again.")
             number_of_guesses -= 1
     print("You've run out of guesses, you lose.")
-    exit()           
+    exit()        
     
 #Start of Script
 print(number)
