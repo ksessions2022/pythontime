@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # imports from all the other files in project
 from question_model import Question
 from data import question_data

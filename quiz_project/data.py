@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 question_data = [
         {
             "category": "Science: Computers",
