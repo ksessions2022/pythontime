@@ -2,7 +2,7 @@
 from turtle import Turtle, Screen
 import random
 
-tim = Turtle(shape="turtle")
+tim = Turtle(shape="turtle", visible=False)
 screen = Screen()
 
 
