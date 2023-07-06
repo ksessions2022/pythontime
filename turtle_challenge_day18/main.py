@@ -7,7 +7,8 @@ screen = Screen()
 
 
 def random_color():
-    colors = ["cyan", "purple", "black", "blue", "red", "pink", "green", "brown"]
+    colors = ["cyan", "purple", "black", "blue", "red", "pink", "green", "brown", "blue violet", "chartreuse",
+              "deep pink", "tomato", "teal"]
     chosen_color_for_shape = tim.color(random.choice(colors))
     return chosen_color_for_shape
 
@@ -48,24 +49,9 @@ class Shape:
 
 def main():
     turtle_position()
-    triangle = Shape(3)
-    square = Shape(4)
-    pentagon = Shape(5)
-    hexagon = Shape(6)
-    heptagon = Shape(7)
-    octagon = Shape(8)
-    nonagon = Shape(9)
-    decagon = Shape(10)
-
-    triangle.draw()
-    square.draw()
-    pentagon.draw()
-    hexagon.draw()
-    heptagon.draw()
-    octagon.draw()
-    nonagon.draw()
-    decagon.draw()
+    for i in range(3, 11):
+        shape = Shape(i)
+        shape.draw()
     screen.exitonclick()
-
 
 main()
